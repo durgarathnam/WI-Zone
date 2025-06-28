@@ -1,0 +1,147 @@
+/* Feedback Container Styles */
+.feedback-container {
+  max-width: 350px; /* Reduced width of the form */
+  margin: 50px auto; /* Center horizontally and add margin from the top for spacing */
+  padding: 20px; /* Adjusted padding for better spacing */
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensures proper positioning */
+  text-align: left; /* Align text to the left */
+}
+
+.feedback-container h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px; /* Decreased heading size */
+}
+
+.feedback-container label,
+.feedback-container select,
+.feedback-container textarea,
+.feedback-container input {
+  width: 100%;
+  font-size: 16px; /* Decreased font size */
+  margin-bottom: 10px; /* Reduced margin for better spacing */
+  padding: 10px; /* Reduced padding for input fields */
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.feedback-container label {
+  font-weight: bold; /* Make labels bold */
+}
+
+/* Select dropdown specific styles */
+.feedback-container select {
+  height: 35px; /* Decreased height for the select dropdown */
+  padding: 5px; /* Reduced padding to ensure options are fully visible */
+  overflow: visible; /* Ensure dropdown options are not cut off */
+}
+
+/* Textarea specific styles */
+.feedback-container textarea {
+  height: 100px; /* Reduced height for the textarea */
+  resize: vertical;
+}
+
+/* Required Indicator and Error Message */
+.feedback-container .required,
+.feedback-container .error-message {
+  color: red;
+}
+
+.error-message {
+  font-size: 12px; /* Reduced font size for error messages */
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+/* Button Container and Button Styles */
+.button-container {
+  text-align: left; /* Align button to the left */
+}
+
+.button-container button {
+  background-color: #007bff; /* Blue button color */
+  color: white;
+  padding: 8px 8px; /* Reduced padding for the button */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px; /* Reduced font size for the button */
+  transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.button-container button[disabled] {
+  background-color: #007bff; /* Blue even when disabled */
+  opacity: 0.6; /* Slightly transparent when disabled */
+  cursor: not-allowed;
+}
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 50%; /* Center horizontally */
+  top: 50%; /* Center vertically */
+  transform: translate(-50%, -50%); /* Center the modal */
+  width: 50%; /* Increased width */
+  height: auto; /* Adjust height as needed */
+ /* background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto; /* Center the content */
+  padding: 20px; /* Adjusted padding */
+  border: 1px solid #888;
+  width: 200px; /* Increased width */
+  height: 200px; /* Increased height to keep it a square */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Adjusted border-radius for a smoother look */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px; /* Reduced font size */
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* OK button styles in the modal */
+.modal-content button {
+  background-color: #007bff; /* Blue button color */
+  color: white;
+  padding: 4px 8px; /* Reduced padding for the button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* Reduced font size for the button */
+  transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.modal-content button[disabled] {
+  background-color: #007bff; /* Blue even when disabled */
+  opacity: 0.6; /* Slightly transparent when disabled */
+  cursor: not-allowed;
+}

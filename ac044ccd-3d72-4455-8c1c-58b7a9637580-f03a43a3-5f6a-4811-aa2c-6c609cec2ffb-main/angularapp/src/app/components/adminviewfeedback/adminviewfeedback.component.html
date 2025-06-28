@@ -1,0 +1,65 @@
+
+<div class="container">
+  <h1>Feedback Received</h1>
+  <hr>
+  <label>Filter by Category:</label>
+  <select [(ngModel)]="filterByCategory" (change)="filter()">
+    <option value="all">All Categories</option>
+    <option value="service">Service</option>
+    <option value="pricing">Pricing</option>
+    <option value="speed">Speed</option>
+  </select>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>USER NAME</th>
+        <th>FEEDBACK</th>
+        <th>POSTED DATE</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feedback of filteredRequests; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{feedback.user.username}}</td>
+        <td>{{feedback.feedbackText}}</td>
+        <td>{{feedback.date | date:'short'}}</td>
+        <td>
+          <button class="profile-btn" (click)="showProfile(feedback.user)">Show Profile</button>
+          <button class="scheme-info-btn" (click)="viewSchemeInfo(feedback.wifiScheme)">View Scheme Info</button>
+        </td>
+      </tr>
+      <tr *ngIf="filteredRequests.length === 0">
+        <td class="no-data-found" colSpan="5">No data found</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Profile Modal -->
+  <div class="modal" id="profileModal">
+    <div class="modal-content">
+      <h3>User Details:</h3><br>
+      <p>Email: {{ selectedUser?.email }}</p>
+      <p>Username: {{ selectedUser?.username }}</p>
+      <p>Mobile Number: {{ selectedUser?.mobileNumber }}</p>
+      <button class="close-btn" (click)="closeProfileModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Scheme Info Modal -->
+  <div class="modal" id="schemeInfoModal">
+    <div class="modal-content">
+      <h3>Scheme Details:</h3><br>
+      <p>Scheme Name: {{ selectedScheme?.schemeName }}</p>
+      <p>Description: {{ selectedScheme?.description }}</p>
+      <p>Region: {{ selectedScheme?.region }}</p>
+      <p>Speed: {{ selectedScheme?.speed }}</p>
+      <p>Data Limit: {{ selectedScheme?.dataLimit }}</p>
+      <p>Fee: {{ selectedScheme?.fee | currency: 'INR'}}</p>
+      <p>Availability Status: {{ selectedScheme?.availabilityStatus }}</p>
+      <button class="close-btn" (click)="closeSchemeInfoModal()">Close</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="usernav">
+    <div class="nav-brand">WiZone</div>
+    <div class="nav-links">
+        <div class="user-box">{{name}}/{{userRole}}</div> <!-- Added a class here -->
+        <div><a routerLink="/home">Home</a></div>
+        <div class="dropdown">
+            <a href="#">WiFi Schemes</a>
+            <div class="dropdown-content">
+                <a routerLink="/user-view-Schemes">View Schemes</a>
+                <a routerLink="/user-view-appliedrequest">Applied Requests</a>
+            </div>
+        </div>
+        <div><a routerLink="/user-view-feedback">Feedback</a></div>
+        <div><button class="logout-button" (click)="openLogoutModal()">Logout</button></div>
+    </div>
+</div>
+<div class="modal" [ngClass]="{ 'show': isLogoutModalOpen }">
+    <div class="modal-content">
+        <span class="close" (click)="closeLogoutModal()">&times;</span>
+        <h2>Are you sure you want to log out?</h2>
+        <div class="button-container">
+            <button class="confirm-button" (click)="confirmLogout()">Yes, Logout</button>
+            <button class="cancel-button" (click)="closeLogoutModal()">Cancel</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div>
+    <h1>WiFi Schemes</h1>
+  </div>
+ 
+  <hr size="5" color="light-blue">
+  <br>
+ 
+  <div>
+    <label for="search">Search by:</label>
+    <input id="search" type="search" [(ngModel)]="searchQuery" placeholder="Scheme Name">
+ 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+    <label for="filter">Filter by Region:</label>
+    <select name="filter" id="filter" [(ngModel)]="selectedRegion">
+      <option value="">All</option>
+      <option *ngFor="let region of availableRegions" [value]="region">{{ region }}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+    <table border="2">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Scheme Name</th>
+          <th>Region</th>
+          <th>Speed</th>
+          <th>Data Limit</th>
+          <th>Fee</th>
+          <th>Description</th>
+          <th>Availability</th>
+          <th colspan="3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let scheme of filteredWifiSchemes(); let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ scheme.schemeName }}</td>
+          <td>{{ scheme.region }}</td>
+          <td>{{ scheme.speed }}</td>
+          <td>{{ scheme.dataLimit }}</td>
+          <td>{{ scheme.fee | currency:'INR':'symbol' }}</td>
+          <td class="description-container">{{ scheme.description }}</td>
+          <td>{{ scheme.availabilityStatus }}</td>
+          <td class="actions">
+            <button (click)="toggleAvailability(scheme)" [ngClass]="{ 'unavailable': scheme.availabilityStatus === 'available' }">
+              {{ scheme.availabilityStatus === 'available' ? 'Make Unavailable' : 'Make Available' }}
+            </button>
+            <button class="edit" (click)="editWifiScheme(scheme.wifiSchemeId)">Edit</button>
+            <button class="delete" (click)="confirmDelete(scheme.wifiSchemeId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ 
+  <!-- Confirmation Dialog -->
+  <div id="confirmDialog" class="confirm-dialog" [ngStyle]="{'display': confirmDialogVisible ? 'block' : 'none'}">
+    <div class="confirm-content">
+      <h2>Are you sure you want to delete?</h2>
+      <button class="confirm-delete" (click)="deleteConfirmed()">Yes, Delete</button>
+      <button (click)="closeConfirmDialog()">Cancel</button>
+    </div>
+  </div>
+ 

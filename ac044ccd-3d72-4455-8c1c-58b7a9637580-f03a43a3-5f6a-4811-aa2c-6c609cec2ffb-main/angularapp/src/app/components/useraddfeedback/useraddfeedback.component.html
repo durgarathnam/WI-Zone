@@ -1,0 +1,39 @@
+<div class="feedback-container">
+  <h2>Add Feedback</h2>
+  <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+    <div>
+      <label for="category">Category <span class="required">*</span></label><br>
+      <select id="category" formControlName="category">
+        <option value="" disabled selected>Choose Category</option>
+        <option value="pricing">Pricing</option>
+        <option value="service">Service</option>
+        <option value="speed">Speed</option>
+      </select>
+      <div *ngIf="category.invalid && (category.touched || category.dirty)">
+        <p *ngIf="category.hasError('required')" class="error-message"><span class="required">*</span> Category is required</p>
+      </div>
+    </div>
+
+    <div>
+
+      <label for="feedbackText">Feedback <span class="required">*</span></label><br>
+      <textarea id="feedbackText" formControlName="feedbackText" placeholder="Enter your feedback here..."></textarea>
+      <div *ngIf="feedbackText.invalid && (feedbackText.touched || feedbackText.dirty)">
+        <p *ngIf="feedbackText.hasError('required')" class="error-message"><span class="required">*</span> Feedback is required</p>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+
+
+<div id="successModal" class="modal">
+  <div class="modal-content">
+      <p>Sucessfully Added!</p>
+      <button (click)="onModalClose()">OK</button>
+  </div>
+</div>

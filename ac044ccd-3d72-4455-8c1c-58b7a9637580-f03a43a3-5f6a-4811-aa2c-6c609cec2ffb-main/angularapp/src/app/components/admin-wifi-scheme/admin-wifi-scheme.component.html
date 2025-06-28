@@ -1,0 +1,83 @@
+
+<div class="container">
+  <form [formGroup]="addWifiSchemeForm" (ngSubmit)="addOrUpdateWifiScheme()">
+    <div *ngIf="isEditing" class="button-container top-right">
+      <button type="button" (click)="navigateToAdminViewScheme()">Back</button>
+    </div>
+    <h2>{{ isEditing ? 'Edit WiFi Scheme' : 'Create New WiFi Scheme' }}</h2>
+    <hr>
+    <div>
+      <label>Scheme Name <span style="color: red">*</span></label><br>
+      <input type="text" formControlName="schemeName" id="schemeName" name="schemeName">
+      <div *ngIf="schemeName.invalid && (schemeName.touched || schemeName.dirty)">
+        <p *ngIf="schemeName.hasError('required')"><span style="color: red">*Scheme Name is required</span></p>
+      </div>
+    </div>
+
+    <div>
+      <label>Description <span style="color: red">*</span></label><br>
+      <textarea name="description" id="description" cols="30" rows="10" formControlName="description"></textarea>
+      <div *ngIf="description.invalid && (description.touched || description.dirty)">
+        <p *ngIf="description.hasError('required')"><span style="color: red">*Description is required</span></p>
+      </div>
+    </div>
+
+    <div>
+      <label>Region<span style="color: red">*</span></label><br>
+      <input type="text" formControlName="region" id="region" name="region">
+      <div *ngIf="region.invalid && (region.touched || region.dirty)">
+        <p *ngIf="region.hasError('required')"><span style="color: red">*Region is required</span></p>
+      </div>
+    </div>
+
+    <div>
+      <label>Speed<span style="color: red">*</span></label><br>
+      <input type="text" formControlName="speed" id="speed" name="speed">
+      <div *ngIf="speed.invalid && (speed.touched || speed.dirty)">
+        <p *ngIf="speed.hasError('required')"><span style="color: red">*Speed is required</span></p>
+        <p *ngIf="speed.hasError('pattern')"><span style="color: red">*Speed should be in mbps</span></p>
+      </div>
+    </div>
+
+    <div>
+      <label>Data Limit<span style="color: red">*</span></label><br>
+      <input type="text" formControlName="dataLimit" id="dataLimit" name="dataLimit">
+      <div *ngIf="dataLimit.invalid && (dataLimit.touched || dataLimit.dirty)">
+        <p *ngIf="dataLimit.hasError('required')"><span style="color: red">*Data Limit is required</span></p>
+        <p *ngIf="dataLimit.hasError('pattern')"><span style="color: red">*Data Limit should be in GB</span></p>
+      </div>
+    </div>
+
+    <div>
+      <label>Fee<span style="color: red">*</span></label><br>
+      <input type="number" formControlName="fee" id="fee" name="fee">
+      <div *ngIf="fee.invalid && (fee.touched || fee.dirty)">
+        <p *ngIf="fee.hasError('required')"><span style="color: red">*Fee is required</span></p>
+        <p *ngIf="fee.hasError('min')"><span style="color: red">*Fee should be non-negative number and should be more than 500</span></p>
+      </div>
+    </div>
+    <div> <label>Availability<span style="color: red">*</span></label><br>
+         <select formControlName="availabilityStatus" id="availabilityStatus">
+            <option value="available">Available</option>
+            <option value="unavailable">Unavailable</option>
+        </select>
+    </div>
+        
+  
+    <div *ngIf="submitted && addWifiSchemeForm.invalid" class="error">
+      <p>*All fields are required.</p>
+
+    </div>
+
+    <div class="button-container">
+      <button type="submit">{{ isEditing ? 'Update WiFi Scheme' : 'Add WiFi Scheme' }}</button>
+    </div>
+  </form>
+
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <p>{{ isEditing ? 'WiFi Scheme Updated Successfully!' : 'WiFi Scheme Added Successfully!' }}</p>
+      <button class="close-btn" (click)="closeModal()">Okay</button>
+    </div>
+  </div>
+</div>

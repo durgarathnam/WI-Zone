@@ -1,0 +1,7 @@
+<!-- <app-adminviewappliedrequest></app-adminviewappliedrequest> -->
+<!-- <app-dashboard></app-dashboard> -->
+<!-- <app-usernav></app-usernav> -->
+
+<app-adminnav *ngIf="service.isLoggedIn() && service.authUser.role === 'ADMIN'"></app-adminnav>
+<app-usernav *ngIf="service.isLoggedIn() && service.authUser.role === 'USER'"></app-usernav>
+<router-outlet></router-outlet>

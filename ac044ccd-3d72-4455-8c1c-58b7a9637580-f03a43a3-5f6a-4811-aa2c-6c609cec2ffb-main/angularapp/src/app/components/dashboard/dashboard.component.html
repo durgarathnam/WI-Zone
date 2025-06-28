@@ -1,0 +1,44 @@
+
+<div class="dashboard">
+    <h1><strong>Admin Dashboard</strong></h1>
+    <div class="card-container">
+        <div class="card">
+            <h2>Total WiFi Schemes</h2>
+            <div class="circle"></div>
+            <p class="count">{{ totalSchemes }}</p>
+        </div>
+
+        <div class="card available">
+            <h2>Available Schemes</h2>
+            <div class="circle"></div>
+            <p class="count">{{ availableSchemes }}</p>
+        </div>
+
+        <div class="card non-available">
+            <h2>Non-Available Schemes</h2>
+            <div class="circle"></div>
+            <p class="count">{{ nonAvailableSchemes }}</p>
+        </div>
+    </div>
+
+    <div class="expanded-details" *ngIf="expandedRegion">
+        <h5><strong>Scheme Details</strong></h5>
+        <div class="scheme-cards-container">
+            <div class="scheme-card" *ngFor="let scheme of getSchemeByRegion(expandedRegion)">
+                <h6>{{ scheme.schemeName }}</h6>
+                <p><strong>Speed:</strong> {{ scheme.speed }}</p>
+                <p><strong>Data Limit:</strong> {{ scheme.dataLimit }}</p>
+                <p><strong>Fee:</strong> {{ scheme.fee | currency:'INR' }}</p>
+                <p><strong>Status: </strong> {{ scheme.availabilityStatus }}</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Region-Wise Famous Schemes</h3>
+    <div class="region-cards-container">
+        <div class="region-card" *ngFor="let region of regionWiseFamousSchemes" [class.light-blue]="['Madurai', 'CBE', 'Erode'].includes(region.region)" (click)="toggleExpandRegion(region.region)">
+            <h4>{{ region.region }}</h4>
+            <p style="color: aliceblue">Scheme: {{ region.scheme.schemeName }}</p>
+        </div>
+    </div>
+</div>

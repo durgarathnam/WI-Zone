@@ -1,0 +1,56 @@
+<div>
+  <h1>WiFi Schemes</h1>
+</div>
+
+<hr size="5" color="light-blue">
+<br>
+
+<div>
+  <label for="search">Search by:</label>
+  <input id="search" type="search" [(ngModel)]="searchQuery">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+<br>
+<div>
+  <table border="2">
+      <thead>
+          <tr>
+              <th>S.No</th>
+              <th>Scheme Name</th>
+              <th>Region</th>
+              <th>Speed</th>
+              <th>Data Limit</th>
+              <th>Fee</th>
+              <th>Description</th>
+              <th>Availability</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let scheme of filteredWifiSchemes(); let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ scheme.schemeName }}</td>
+              <td>{{ scheme.region }}</td>
+              <td>{{ scheme.speed }}</td>
+              <td>{{ scheme.dataLimit }}</td>
+              <td>{{ scheme.fee }}</td>
+              <td>{{ scheme.description }}</td>
+              <td>{{ scheme.availabilityStatus }}</td>
+              <td>
+                  <button
+                      (click)="applyScheme(scheme.wifiSchemeId)"
+                      [disabled]="scheme.availabilityStatus !== 'available' || isSchemeApplied(scheme.wifiSchemeId)"
+                      [ngClass]="{
+                          'apply-button': scheme.availabilityStatus === 'available' && !isSchemeApplied(scheme.wifiSchemeId),
+                          'applied-button': isSchemeApplied(scheme.wifiSchemeId)
+                      }">
+                      {{ isSchemeApplied(scheme.wifiSchemeId) ? 'Applied' : 'Apply' }}
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

@@ -1,0 +1,54 @@
+
+<div class="container">
+  <h1>My Feedback</h1>
+  <hr>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Feedback</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feedback of feedbacks; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ feedback.feedbackText }}</td>
+        <td>
+          <button class="scheme-info-btn" (click)="viewSchemeInfo(feedback.wifiScheme)">View Scheme Info</button>
+          <button class="delete-btn" (click)="confirmDelete(feedback.feedbackId)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="feedbacks.length === 0">
+        <td class="no-data-found" colSpan="3">No data found</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Scheme Info Modal -->
+  <div class="modal" id="schemeInfoModal">
+    <div class="modal-content">
+      <span class="close" (click)="closeSchemeInfoModal()">&times;</span>
+      <h2>Scheme Details</h2><br>
+      <p><strong>Scheme Name:</strong> {{ selectedScheme?.schemeName }}</p>
+      <p><strong>Region:</strong> {{ selectedScheme?.region }}</p>
+      <p><strong>Speed:</strong> {{ selectedScheme?.speed }}</p>
+      <p><strong>Data Limit:</strong> {{ selectedScheme?.dataLimit }}</p>
+      <p><strong>Fee:</strong> {{ selectedScheme?.fee | currency: 'INR'  }}</p>
+      <p><strong>Availability Status:</strong> {{ selectedScheme?.availabilityStatus }}</p>
+      <p><strong>Description:</strong> {{ selectedScheme?.description }}</p>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal" id="deleteModal">
+    <div class="modal-content-small"> <!-- Use smaller modal content class -->
+      <p>Are you sure you want to delete?</p>
+      <div class="button-container">
+        <button class="yes-delete-btn" (click)="deleteFeedback()">Yes, Delete</button>
+        <button class="cancel-btn" (click)="closeDeleteModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

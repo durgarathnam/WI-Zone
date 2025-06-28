@@ -1,0 +1,190 @@
+
+/* .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.nav-brand {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+} */
+
+
+.container {
+  margin: 20px auto;
+  padding: 16px;
+  max-width: 600px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+
+label {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 6px;
+  margin: 2px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+p {
+  color: red;
+  font-size: 0.75em;
+  margin: 2px 0 0;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 6px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 12px;
+}
+
+button[type="submit"]:hover {
+  background-color: darkblue;
+}
+
+button.back-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 6px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button.back-button:hover {
+  background-color: darkblue;
+}
+
+.required {
+  color: red;
+}
+
+.validation-message {
+  color: red;
+  font-size: 0.75em;
+  margin-top: 8px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 12px;
+  border: 1px solid #888;
+  width: 50%;
+  max-width: 200px;
+  text-align: center;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top:
+      0;
+    opacity: 1
+  }
+}
+
+.close {
+  display: none;
+}
+
+.modal p {
+  color: black;
+  font-size: 0.9em;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em;
+  margin-top: 8px;
+}
+
+button:hover {
+  background-color: darkblue;
+}

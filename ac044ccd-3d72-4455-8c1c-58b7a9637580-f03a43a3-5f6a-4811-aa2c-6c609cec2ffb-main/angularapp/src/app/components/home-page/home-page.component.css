@@ -1,0 +1,162 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent body scroll */
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    line-height: 1.6;
+}
+
+/* Container for the content sections */
+.content-container {
+    overflow-y: auto; /* Enable vertical scroll for the content */
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Background Image for Intro and Welcome Sections */
+.intro-section, .welcome-section {
+    background-image: url('./homepage.jpg'); /* Replace with the actual image URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Intro Section */
+.intro-section {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Intro overlay */
+.intro-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px 40px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.intro-overlay h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.intro-overlay p {
+    font-size: 1.2rem;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/* Welcome Section */
+.welcome-section {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align items to the bottom */
+    position: relative;
+    padding-bottom: 50px; /* Add padding to move section down */
+}
+
+.welcome-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.welcome-box {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 40px 70px; /* Increase padding for more height */
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); /* Blur effect */
+    max-width: 70%; /* Adjust the width of the dialog box */
+}
+
+.welcome-box h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
+.welcome-box p {
+    font-size: 1rem;
+    line-height: 1.5;
+    word-wrap: break-word; /* Ensure long words break properly */
+    margin-bottom: 10px; /* Add space between lines */
+    font-family: "Times New Roman", Times, serif;
+}
+
+/* Horizontal Rule for Footer */
+.hr-footer {
+    border: 0;
+    height: 5px;
+    background: none; /* Ensure no background is applied */
+    border-top: 5px solid rgba(0, 0, 0, 0.961); /* Use border-top to set the color to black */
+    margin: 20px auto; /* Add vertical space and center */
+    width: 80%; /* Set width to 80% of the container */
+}
+
+/* Contact Section */
+.contact-section {
+    height: auto; /* Adjust height to content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #ffffff; /* Set background color to white */
+    padding: 80px 10; /* Add padding for space */
+}
+
+.contact-box {
+    background-color: rgba(50, 17, 48, 1); /* Dark Violet color in RGBA */
+    color: white;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    position: relative; /* Remove absolute position */
+    bottom: 0; /* Remove bottom alignment */
+}
+
+.contact-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.contact-box p {
+    font-size: 1rem;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.contact-box p strong {
+    font-weight: bold;
+}
+
+/* Custom styles for icons */
+.contact-box i {
+    margin-right: 10px;
+}
+
+.phone-icon {
+    transform: rotate(90deg); /* Rotate the icon by 90 degrees */
+    color: red; /* Set the color to red */
+}

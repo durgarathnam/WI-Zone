@@ -1,0 +1,83 @@
+<div>
+  <h1>WiFi Scheme Requests for Approval</h1>
+</div>
+
+<hr class="custom-hr">
+<br>
+
+<div class="search-filter-container">
+  <label for="search">Search by Scheme Name:</label>
+  <input id="search" type="search" [(ngModel)]="searchTerm" (input)="filterRequests()">
+
+  <label for="filter">Filter by Status:</label>
+  <select name="filter" id="filter" [(ngModel)]="filterStatus" (change)="filterRequests()">
+    <option value="All">All</option>
+    <option value="Approved">Approved</option>
+    <option value="Pending">Pending</option>
+    <option value="Rejected">Rejected</option>
+  </select>
+</div>
+<br>
+<div class="table-container">
+  <table class="scheme-table" border="2">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Username</th>
+        <th>Scheme Name</th>
+        <th>City</th>
+        <th>Request Date</th>
+        <th>Status</th>
+        <th colspan="3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of filteredRequests; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{r.user.username}}</td>
+        <td>{{r.wifiScheme.schemeName}}</td>
+        <td>{{r.wifiScheme.region}}</td>
+        <td>{{r.requestDate}}</td>
+        <td>{{r.status}}</td>
+        <td>
+          <button *ngIf="r.status === 'Pending' || r.status === 'Rejected'" class="approve" (click)="approveRequest(r.wifiSchemeRequestId, r)">Approve</button>
+          <button class="show-more" (click)="viewDetails(r)">Show More</button>
+          <button *ngIf="r.status === 'Pending' || r.status === 'Approved'" class="reject" (click)="rejectRequest(r.wifiSchemeRequestId, r)">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal for displaying request details -->
+<div class="modal" [ngStyle]="{'display': showModal ? 'block' : 'none'}">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+
+    <h2>Details for {{selectedRequest?.wifiScheme.schemeName}}</h2>
+    <p><strong>Username:</strong> {{selectedRequest?.user.username}}</p>
+    <p><strong>Scheme Name:</strong> {{selectedRequest?.wifiScheme.schemeName}}</p>
+    <p><strong>City:</strong> {{selectedRequest?.city}}</p>
+    <p><strong>Request Date:</strong> {{selectedRequest?.requestDate}}</p>
+    <p><strong>Status:</strong> {{selectedRequest?.status}}</p>
+    <p><strong>Street Name:</strong> {{selectedRequest?.streetName}}</p>
+    <p><strong>Landmark:</strong> {{selectedRequest?.landmark}}</p>
+    <p><strong>Preferred Setup Date:</strong> {{selectedRequest?.preferredSetupDate}}</p>
+    <p><strong>Time Slot:</strong> {{selectedRequest?.timeSlot}}</p>
+    <div *ngIf="selectedRequest?.proof">
+      <p><strong>Proof:</strong></p>
+      <img [src]="selectedRequest?.proof.startsWith('data:') ? selectedRequest.proof : 'data:image/png;base64,' + selectedRequest.proof" alt="Uploaded File" style="max-width: 50%;">
+    </div>
+  </div>
+</div>
+
+<!-- Modal for displaying proof image
+<div class="modal" *ngIf="showImageModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeImageModal()">&times;</span>
+    <div class="image-container">
+      <img [src]="selectedProofImage" alt="Proof Image">
+    </div>
+  </div>
+</div>
+-->

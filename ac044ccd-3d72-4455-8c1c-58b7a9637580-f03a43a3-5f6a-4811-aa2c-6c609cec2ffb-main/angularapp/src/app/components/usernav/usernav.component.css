@@ -1,0 +1,170 @@
+.usernav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #8B4513, #eea94d, #540254); /* Adjusted gradient */
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1000; /* Ensure nav is on top */
+}
+ 
+.nav-brand {
+  color: white;
+  font-size: 1.5em;
+}
+ 
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+ 
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+ 
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.user-box {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid white; /* Added white border */
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
+ 
+.logout-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+ 
+.logout-button:hover {
+  background-color: darkred;
+}
+ 
+/* Dropdown Menu Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 1001; /* Ensure dropdown content stays on top */
+}
+ 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1002; /* Ensure dropdown items stay on top */
+}
+ 
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+ 
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+ 
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+ 
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px); /* Apply blur to the entire background */
+}
+ 
+.modal.show {
+  display: flex;
+}
+ 
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 40px; /* Increased padding for more height */
+  border: 1px solid #888;
+  width: 500px; /* Increased width */
+  border-radius: 10px;
+  text-align: center;
+}
+ 
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+ 
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+ 
+.modal-content h2 {
+  font-size: 1.2em; /* Reduced font size */
+}
+ 
+.modal-content .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+ 
+.confirm-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+ 
+.confirm-button:hover {
+  background-color: darkgreen;
+}
+ 
+.cancel-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+ 
+.cancel-button:hover {
+  background-color: darkred;
+}
+

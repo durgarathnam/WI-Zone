@@ -1,0 +1,92 @@
+<div class="container">
+    <button class="back-button" (click)="gotoUserView()">Back</button>
+    <h1>WiFi Scheme Request Form</h1>
+    <div>
+        <form [formGroup]="requestForm" (ngSubmit)="addRequest()">
+            <div>
+                <label>Street Name <span class="required">*</span></label><br>
+                <input type="text" name="streetName" formControlName="streetName">
+                <div *ngIf="streetName.invalid && (streetName.touched || streetName.dirty)">
+                    <p *ngIf="streetName.hasError('required')"><span class="required">*</span>Street Name is Required
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <label>Landmark <span class="required">*</span></label><br>
+                <input type="text" name="landmark" formControlName="landmark">
+                <div *ngIf="landmark.invalid && (landmark.touched || landmark.dirty)">
+                    <p *ngIf="landmark.hasError('required')"><span class="required">*</span>Landmark is Required</p>
+                </div>
+            </div>
+
+            <div>
+                <label>City <span class="required">*</span></label><br>
+                <input type="text" name="city" formControlName="city">
+                <div *ngIf="city.invalid && (city.touched || city.dirty)">
+                    <p *ngIf="city.hasError('required')"><span class="required">*</span>City is Required</p>
+                </div>
+            </div>
+
+            <div>
+                <label>State <span class="required">*</span></label><br>
+                <input type="text" name="state" formControlName="state">
+                <div *ngIf="state.invalid && (state.touched || state.dirty)">
+                    <p *ngIf="state.hasError('required')"><span class="required">*</span>State is Required</p>
+                </div>
+            </div>
+
+            <div>
+                <label>ZIP Code <span class="required">*</span></label><br>
+                <input type="text" name="zipcode" formControlName="zipcode">
+                <div *ngIf="zipcode.invalid && (zipcode.touched || zipcode.dirty)">
+                    <p *ngIf="zipcode.hasError('required')"><span class="required">*</span>ZIP Code is Required</p>
+                </div>
+            </div>
+
+            <div>
+                <label>Preferred Setup Date <span class="required">*</span></label><br>
+                <input type="date" name="preferredSetupDate" formControlName="preferredSetupDate" [min]="today">
+                <div *ngIf="preferredSetupDate.invalid && (preferredSetupDate.touched || preferredSetupDate.dirty)">
+                  <p *ngIf="preferredSetupDate.hasError('required')"><span class="required">*</span>Preferred Setup Date is
+                    Required</p>
+                </div>
+              </div>
+
+            <div>
+                <label>Preferred Time Slot <span class="required">*</span></label><br>
+                <input type="text" name="timeSlot" formControlName="timeSlot">
+                <div *ngIf="timeSlot.invalid && (timeSlot.touched || timeSlot.dirty)">
+                    <p *ngIf="timeSlot.hasError('required')"><span class="required">*</span>Preferred Time Slot is
+                        Required</p>
+                </div>
+            </div>
+
+            <div> <label>Upload Proof <span class="required">*</span></label><br> <input type="file" name="proof"
+                    (change)="onFileChange($event)">
+                <div *ngIf="proof.invalid && (proof.touched || proof.dirty)">
+                    <p *ngIf="proof.hasError('required')"><span class="required">*</span>Proof is Required and should be
+                        lessthan 20kb</p>
+                </div>
+            </div>
+            <div *ngIf="coverImageBase64"> <img [src]="coverImageBase64" alt="Proof Image Preview"
+                    class="img-thumbnail" /> </div>
+            <div>
+                <label>Comments <span class="required">*</span></label><br>
+                <textarea type="text" name="comments" formControlName="comments"></textarea>
+                <div *ngIf="comments.invalid && (comments.touched || comments.dirty)">
+                    <p *ngIf="comments.hasError('required')"><span class="required">*</span>Comments is Required</p>
+                </div>
+            </div>
+            <div> <button type="submit">Submit</button> </div>
+            <div *ngIf="formInvalid" class="validation-message"><span class="required">*</span> All required fields must
+                be filled out.</div>
+        </form>
+    </div>
+</div>
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <p>Request Submitted Successfully!</p> <button (click)="onModalClose()">OK
+        </button>
+    </div>
+</div>
